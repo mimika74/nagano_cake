@@ -1,0 +1,29 @@
+<h2>顧客ログイン画面</h2>
+
+<div class ="row">
+<div class="col-sm-12 col-md-8 col-lg-15 px-5 ">
+
+<h2>Log in</h2>
+
+<%= form_for model: @customer, url: user_session_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+
+
+</div>
+</div>
