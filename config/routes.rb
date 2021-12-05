@@ -1,36 +1,40 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
+
   devise_for :customers
   root to: 'public/homes#top'
   get "/home/about" => "homes#about"
 
+
+devise_scope :admin do
+
   namespace :admin do
-    get 'orders/show'
+  get 'orders/:id' => 'orders#show', as: :admin_orders_show
+  end
+
+  namespace :admin do
+    get 'customers' => 'customers#index', as: :admin_customers_index
+    get 'customers/:id' => 'customers#show', as: :admin_customers_show
+    get 'customers/:id/edit' => 'customers#edit', as: :admin_customers_edit
   end
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    get 'genres' => 'genres#index', as: :admin_genres_index
+    get 'jenres/:id/edit' => 'genres#edit', as: :admin_jenres_edit
   end
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
+    get 'items' => 'items#index', as: :admin_items_index
     get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    get 'items/:id' => 'items#show', as: :admin_items_show
+    get 'items/:id/edit' => 'items#edit', as: :admin_items_edit
   end
   namespace :admin do
-    get 'homes/top'
+    get '/' => 'homes#top', as: :admin_homes_top
   end
   namespace :admin do
-    get 'sessions/new'
+    get 'sign_in' =>'sessions#new', as: :admin_sessions_new
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+end
 
 
 
