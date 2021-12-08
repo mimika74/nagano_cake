@@ -1,3 +1,11 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
-商品詳細画面
+<h1>商品詳細画面Admin::Items#show</h1>
+
+
+
+<div>
+  <%= attachment_image_tag @item, :image %>
+  <p>ショップ名：<%= @item.name %></p>
+  <p>説明：<%= @item.introduction %></p>
+
+  <p>投稿日時：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
+</div>

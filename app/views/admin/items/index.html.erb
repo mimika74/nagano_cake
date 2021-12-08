@@ -1,3 +1,13 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
-商品一覧
+<h1>商品一覧</h1>
+
+
+
+<% @items.each do |item| %>
+<div>
+  <%= attachment_image_tag image_id, :image %>
+  <p>投稿ユーザー画像：<%= image_tag(image_id) %></p>
+  <p>ショップ名：<%= item.name %></p>
+  <p>説明：<%= item.introduction %></p>
+
+</div>
+<% end %>
