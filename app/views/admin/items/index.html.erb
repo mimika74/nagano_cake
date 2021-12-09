@@ -6,8 +6,8 @@
 <div>
   <%= attachment_image_tag image_id, :image %>
   <p>投稿ユーザー画像：<%= image_tag(image_id) %></p>
-  <p>ショップ名：<%= item.name %></p>
-  <p>説明：<%= item.introduction %></p>
-
+  <p>商品名：<%= item.name %></p>
+  <p>商品説明：<%= item.introduction %></p>
+  <p>ジャンル：<%= item.jenre %></p>
 </div>
 <% end %>
