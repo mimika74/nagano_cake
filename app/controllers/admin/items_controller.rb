@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
 
     @item = Item.new(item_params)
     @item.save
-    redirect_to "admin/items"
+    redirect_to "/"
   end
 
 

@@ -1,0 +1,26 @@
+<h1>Admin::Customers#show</h1>
+<p>Find me in app/views/admin/customers/show.html.erb</p>
+顧客詳細画面
+
+<% @customers.each do |customer| %>
+           <tr>
+             <td><%= customer.last_name %></td>
+             <td><%= customer.first_name %></td>
+             <td><%= customer.last_name %></td>
+             <td><%= customer.last_name_kana %></td>
+             <td><%= customer.first_name_kana %></td>
+             <td><%= customer.email %></td>
+             <td><%= customer.encryptes_password %></td>
+             <td><%= customer.postal_code %></td>
+             <td><%= customer.address %></td>
+             <td><%= customer.telephone_number %></td>
+             <td><%= customer.is_deleted %></td>
+             <td><%= customer.last_name %></td>
+             <td><%= customer.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+<% end %>
+
+
+
+
+
