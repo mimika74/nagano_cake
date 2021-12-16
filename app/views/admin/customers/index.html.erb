@@ -1,0 +1,14 @@
+
+
+顧客一覧画面
+
+ <% @customers.each do |customer| %>
+      <tr>
+
+            <td><%= customer.name %></td>
+            <%= link_to "edit", admin_admin_customers_edit(customer) %>
+
+
+
+      </tr>
+    <% end %>

@@ -1,0 +1,10 @@
+<h2>ジャンルデータ更新</h2>
+
+
+      <%= form_with model: @jenre, local:true do |f| %>
+      <h6>ジャンル名</h6>
+      <%= f.text_field :name %>
+
+
+      <%= f.submit 'Update', class: 'btn btn-success' %></p>
+      <% end %>
