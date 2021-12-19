@@ -1,2 +1,28 @@
-<h1>管理者トップ画面　注文履歴一覧画面</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h2>管理者トップ画面　</h2>
+
+<div class="container px-5 px-sm-0">
+<div class="col-md-3">
+
+<h4>Item</h4>
+<%=link_to "item", admin_items_path %>
+
+<h4>genre</h4>
+<%=link_to "jenre", admin_admin_genres_index_path %>
+
+<h4>Customer</h4>
+<%=link_to "customer", admin_customers_index_path %>
+
+<h4>Order</h4>
+
+
+<h4>Order_details</h4>
+
+
+</div>
+
+<div class="col-md-8 offset-md-1">
+  注文履歴一覧
+
+
+</div>
+</div>

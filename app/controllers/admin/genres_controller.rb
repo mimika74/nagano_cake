@@ -1,24 +1,24 @@
 class Admin::GenresController < ApplicationController
   def index
-    @jenre = Jenre.all
-    @jenre = Jenre.new
+    @genres = Genre.all
+    @genre = Genre.new
   end
 
   def edit
-    @jenre = Jenre.find(params[:id])
+    @genre = Genre.find(params[:id])
   end
 
   def create
-    @jenre = Jenre.new(item_params)
-    @jenre.save
+    @genre = Genre.new(item_params)
+    @genre.save
     redirect_to "admin/items"
   end
 
   def update
-    @item = Item.find(params[:id])
+    @genre = Genre.find(params[:id])
 
-    @item.update(item_params)
-    if @item.save
+    @genre.update(item_params)
+    if @genre.save
     redirect_to "admin/items"
     else
     render :edit

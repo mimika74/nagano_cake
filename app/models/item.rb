@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
 
-  belongs_to :admin
-  belongs_to :jenre
+
+  #belongs_to :genre
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
 
-  attachment :image_id
+  attachment :image
 
 end
