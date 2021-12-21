@@ -1,18 +1,33 @@
 <h1>商品一覧</h1>
 
 
+<%= link_to "addItem", new_admin_item_path %>
 
+<div class="container">
+
+<table class="table table-hover table-inverse">
+<tbody>
+  <tr>
 <% @items.each do |item| %>
 <div>
-  <%= attachment_image_tag image_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
-  <p>投稿ユーザー画像
+  <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
+
   <p>商品名：<%= item.name %></p>
   <p>商品説明：<%= item.introduction %></p>
-  <p>ジャンル：<%= item.name %></p>
+  <p>ジャンル</p>
+
+  <p>価格</p>
+  <%= item.price %>
+
+  <p>投稿日時：<%= item.created_at.strftime('%Y/%m/%d') %></p>
+
+  <%= link_to "Show", admin_item_path(item.id) %>
+
 </div>
 <% end %>
+</tr>
+</tbody>
+</table>
+</div>
 
-<h4>add new item </h4>
-
-<%= link_to "addItem", new_admin_item_path %>
 

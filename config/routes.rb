@@ -30,9 +30,8 @@ end
     get 'customers' => 'customers#index', as: :customers_index
     get 'customers/:id' => 'customers#show', as: :customers_show
     get 'customers/:id/edit' => 'customers#edit', as: :customers_edit
-
-    get 'genres' => 'genres#index', as: :admin_genres_index
-    get 'jenres/:id/edit' => 'genres#edit', as: :admin_jenres_edit
+    resources :genres, only:[:index, :create, :edit, :update]#index', as: :genres_index
+  #  get 'genres/:id/edit' => 'genres#edit', as: :genres_edit
 
   end
 

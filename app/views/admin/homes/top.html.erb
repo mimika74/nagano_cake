@@ -7,7 +7,7 @@
 <%=link_to "item", admin_items_path %>
 
 <h4>genre</h4>
-<%=link_to "jenre", admin_admin_genres_index_path %>
+<%=link_to "genre", admin_genres_path %>
 
 <h4>Customer</h4>
 <%=link_to "customer", admin_customers_index_path %>
@@ -26,3 +26,5 @@
 
 </div>
 </div>
+
+<%= link_to "Log out", destroy_admin_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %>

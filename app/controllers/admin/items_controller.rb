@@ -22,7 +22,7 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    redirect_to "/admin"
+
   end
 
 
@@ -32,7 +32,7 @@ class Admin::ItemsController < ApplicationController
 
     @item.update(item_params)
     if @item.save
-    redirect_to "admin/items"
+    redirect_to "/admin"
     else
     render :edit
     end

@@ -1,0 +1,23 @@
+
+ジャンル管理画面　一覧と追加兼ねる
+
+<% @genres.each do |genre| %>
+
+
+
+  <p>ジャンル：<%= genre.name %></p>
+  <%= link_to "Edit", edit_admin_genre_path(genre.id) %>
+
+<% end %>
+
+<h4>add new genre </h4>
+ <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit '追加' %>
+
+ <% end %>
+
+
+
+
+<%= link_to "back", admin_homes_top_path %>
