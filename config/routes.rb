@@ -38,7 +38,14 @@ end
 
 
   namespace :public do
-    resources :items, only:[:show, :index]
+    get 'items' => 'items#index'
+    get 'items/:id' => 'items#show'
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/edit' => 'customers#edit'
+    patch 'customers' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
+
   end
 
   get "customers/sign_in" => "public/sessions#new"
