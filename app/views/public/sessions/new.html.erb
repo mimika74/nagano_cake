@@ -5,7 +5,7 @@
 
 <h2>Log in</h2>
 
-<%= form_for model: @customer, url: user_session_path, local: true do |f| %>
+<%= form_for model: @customer, url: customer_session_path, local: true do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
  # devise_for :customers
   root to: 'public/homes#top'
-  get "/home/about" => "homes#about"
+
 
 
 devise_scope :admin do
@@ -30,6 +30,7 @@ end
     get 'customers' => 'customers#index', as: :customers_index
     get 'customers/:id' => 'customers#show', as: :customers_show
     get 'customers/:id/edit' => 'customers#edit', as: :customers_edit
+   # resources :genres, only:[:index, :create, :edit, :update]#index', as: :genres_index
     resources :genres, only:[:index, :create, :edit, :update]#index', as: :genres_index
   #  get 'genres/:id/edit' => 'genres#edit', as: :genres_edit
 
@@ -38,6 +39,7 @@ end
 
 
   namespace :public do
+    get "/about" => "homes#about"
     get 'items' => 'items#index'
     get 'items/:id' => 'items#show'
     get 'customers/my_page' => 'customers#show'
@@ -48,8 +50,13 @@ end
 
   end
 
-  get "customers/sign_in" => "public/sessions#new"
-  post "/customers/sign_in" => "public/sessions#create"
-  delete "/customers/sign_out" => "public/sessions#destroy"
+  #namespace :customer do
+    #get 'sign_up' => 'registrations#new'
+    #post '/' => 'registrations#create'
+    #get 'sign_in' => 'sessions#new'
+    #post 'sign_in' => 'sessions#create'
+    #delete 'sign_out' => 'sessions#destroy'
+
+  #end
 
 end
