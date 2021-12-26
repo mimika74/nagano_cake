@@ -1,6 +1,8 @@
 class Admin::ItemsController < ApplicationController
   def index
+
     @items = Item.all
+    @item = @items
   end
 
   def new
@@ -37,7 +39,7 @@ class Admin::ItemsController < ApplicationController
 
     @item.update(item_params)
     if @item.save
-    redirect_to "/admin"
+    redirect_to admin_item_path(@item)
     else
     render :edit
     end

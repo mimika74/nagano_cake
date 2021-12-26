@@ -2,6 +2,7 @@
 
 
 <%= link_to "addItem", new_admin_item_path %>
+<%= link_to "back", admin_homes_top_path %>
 
 <div class="container">
 
@@ -14,7 +15,7 @@
 
   <p>商品名：<%= item.name %></p>
   <p>商品説明：<%= item.introduction %></p>
-  <p>ジャンル</p>
+  <p>ジャンル: <%= item.genre.name %></p>
 
   <p>価格</p>
   <%= item.price %>
@@ -22,7 +23,7 @@
   <p>投稿日時：<%= item.created_at.strftime('%Y/%m/%d') %></p>
 
   <%= link_to "Show", admin_item_path(item.id) %>
-
+  <%= link_to "Edit", edit_admin_item_path(item.id) %>
 </div>
 <% end %>
 </tr>
