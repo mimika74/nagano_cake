@@ -1,9 +1,14 @@
 <h1>顧客編集画面</h1>
 
-<%= form_with model: @customer, local:true do |f| %>
+<%= form_with model: @customer, url:admin_customers_update_path(@customer.id), local:true do |f| %>
 
- <%= f.select :is_deleted, [['退会',true],['会員',false]] %>
+<%= @customer.email %>
+<%= f.select :is_deleted, [['退会',true],['会員',false]] %>
+
+<%= f.submit "更新" %>
 
 <% end %>
 
 </center>
+
+<%= link_to "back", admin_customers_index_path %>

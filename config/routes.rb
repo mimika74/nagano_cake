@@ -30,6 +30,7 @@ end
     get 'customers' => 'customers#index', as: :customers_index
     get 'customers/:id' => 'customers#show', as: :customers_show
     get 'customers/:id/edit' => 'customers#edit', as: :customers_edit
+    patch 'customers/:id' => 'customers#update', as: :customers_update
    # resources :genres, only:[:index, :create, :edit, :update]#index', as: :genres_index
     resources :genres, only:[:index, :create, :edit, :update]#index', as: :genres_index
   #  get 'genres/:id/edit' => 'genres#edit', as: :genres_edit
@@ -38,17 +39,21 @@ end
 
 
 
-  namespace :public do
-    get "/about" => "homes#about"
-    get 'items' => 'items#index'
-    get 'items/:id' => 'items#show'
-    get 'customers/my_page' => 'customers#show'
-    get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw'
 
-  end
+    get "/about" => "public/homes#about"
+    #namespace :public do
+    #resources :items, only:[:index, :show]
+    #end
+
+    get 'items' => 'public/items#index'
+    get 'items/:id' => 'public/items#show', as: :item
+    get 'customers/my_page' => 'public/customers#show'
+    get 'customers/edit' => 'public/customers#edit'
+    patch 'customers' => 'public/customers#update'
+    get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+    patch 'customers/withdraw' => 'public/customers#withdraw'
+
+
 
   #namespace :customer do
     #get 'sign_up' => 'registrations#new'

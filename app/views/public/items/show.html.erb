@@ -1,18 +1,17 @@
 <h2>商品詳細</h2>
 
 
- <% @items.each do |item| %>
+
  <h4>画像</h4>
-  <%= attachment_image_tag item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   <h4>商品名</h4>
-  <%= item.name %>
+  <%= @item.name %>
   <h4>商品説明文</h4>
-  <%= item.introduction %>
+  <%= @item.introduction %>
   <h4>ジャンル</h4>
-  <%= item.name %>
+  <%= @item.name %>
   <h4>価格</h4>
-  <%= item.price %>
+  <%= @item.price %>
 
-  <p>投稿日時：<%= item.created_at.strftime('%Y/%m/%d') %></p>
 
-  <% end %>
+

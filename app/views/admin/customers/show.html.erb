@@ -1,24 +1,24 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+
 顧客詳細画面
 
-<% @customers.each do |customer| %>
+
            <tr>
-             <td><%= customer.last_name %></td>
-             <td><%= customer.first_name %></td>
-             <td><%= customer.last_name %></td>
-             <td><%= customer.last_name_kana %></td>
-             <td><%= customer.first_name_kana %></td>
-             <td><%= customer.email %></td>
-             <td><%= customer.encryptes_password %></td>
-             <td><%= customer.postal_code %></td>
-             <td><%= customer.address %></td>
-             <td><%= customer.telephone_number %></td>
-             <td><%= customer.is_deleted %></td>
-             <td><%= customer.last_name %></td>
-             <td><%= customer.created_at.strftime('%Y/%m/%d') %></td>
+              <p>姓: <%= @customer.last_name %></p>
+             <p>名: <%= @customer.first_name %></p>
+
+             <p>姓カナ: <%= @customer.last_name_kana %></p>
+             <p>名カナ: <%= @customer.first_name_kana %></p>
+             <p>メールアドレス: <%= @customer.email %></p>
+
+             <p>郵便番号: <%= @customer.postal_code %></p>
+             <p>住所: <%= @customer.address %></p>
+             <p>携帯電話: <%= @customer.telephone_number %></p>
+             <p>会員ステータス: <%= @customer.is_deleted %></p>
+
+             <p>登録日時: <%= @customer.created_at.strftime('%Y/%m/%d') %></p>
           </tr>
-<% end %>
+<%= link_to "edit", admin_customers_edit_path(@customer.id) %>
+<%= link_to "back", admin_customers_index_path %>
 
 
 

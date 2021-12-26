@@ -1,7 +1,15 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
+
+    #if @customer != current_customer
+     # redirect_to "/"
+   # else
+
+      @customer == current_customer
+
+
+    #end
   end
 
   def edit

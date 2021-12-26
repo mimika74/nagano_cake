@@ -2,13 +2,20 @@
 
 顧客一覧画面
 
+<p>
  <% @customers.each do |customer| %>
       <tr>
 
-            <td><%= customer.name %></td>
-            <%= link_to "edit", admin_admin_customers_edit(customer) %>
+            <td><%= customer.email %></td>
+            <%= link_to "edit", admin_customers_edit_path(customer.id) %>
+            <%= link_to "show", admin_customers_show_path(customer.id) %>
 
 
 
       </tr>
     <% end %>
+</p>
+
+<p>
+  <%= link_to "back", admin_homes_top_path %>
+</p>
