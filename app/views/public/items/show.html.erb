@@ -13,6 +13,15 @@
   <h4>価格</h4>
   <%= @item.price %>
 
+  <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+  <%= f.hidden_field :item_id, value: cart_item.item.id %>
+  <%= f.select :amount, *[1..3] %>
+  <%= f.submit "カートに入れる" %>
+  <% end %>
+
+
+
+
   <%= link_to "商品一覧へ", items_path %>
 
 
