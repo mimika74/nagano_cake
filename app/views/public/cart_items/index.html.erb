@@ -1,1 +1,19 @@
-カート内商品一覧画面
+
+
+
+<thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+</thead>
+<tbody>
+<% @cart_items.each do |cart_item| %>
+    <tr>
+        <td>い<%= cart_item.item.with_tax_price %></td>
+        <td>ろ<%= cart_item.subtotal %></td>
+       は <%= @total +=  cart_item.subtotal %>
+    </tr>
+<% end %>
+</tbody>
+g

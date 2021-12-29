@@ -13,9 +13,11 @@
 
     <% if customer_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+
         <%= link_to "マイページ", customers_my_page_path %>
-        カート内
+        <%= link_to "商品一覧", items_path %>
+        <%= link_to "カート", cart_items_path %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
