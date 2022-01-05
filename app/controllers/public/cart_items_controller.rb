@@ -3,14 +3,21 @@ class Public::CartItemsController < ApplicationController
 
 
   def index
-    @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    #@cart_items = current_customer.cart_items.all
+    @cart_items = cart_items.all
+    #@total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def create
-    @cart_items ||= current_customer.cart_items.build(item_id: params[:item_id])
+
+    #@cart_items = current_customer.cart_items.build(item_id: params[:item_id])
+    #@cart_item = @item.cart_items.build(params[:id])
     #@cart_items.amount += params[:amount].to_i
-    if  @cart_items.save
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+
+    #cart.cart_item.create!(item_id: item.id)
+    if  @cart_item.save!
       flash[:notice] = '商品が追加されました。'
       redirect_to items_path
     else
@@ -20,7 +27,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    if @cart_items.update(amount: params[:amount].to_i)
+    if @cart_item.update(amount: params[:amount].to_i)
       flash[:notice] = 'カート内のギフトが更新されました'
     else
     flash[:alert] = 'カート内のギフトの更新に失敗しました'
@@ -29,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-     if @cart_items.destroy
+     if @cart_item.destroy
       flash[:notice] = 'カート内のギフトが削除されました'
      else
       flash[:alert] = '削除に失敗しました'
@@ -38,7 +45,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    if @cart_items.destroy_all
+    if @cart_item.destroy_all
       flash[:notice] = 'カート内のギフトが削除されました'
     else
       flash[:alert] = '削除に失敗しました'
@@ -64,7 +71,7 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_items).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount)
   end
 
 

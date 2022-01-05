@@ -8,7 +8,7 @@
     <th>小計</th>
 </thead>
 <tbody>
-<% @cart_items.each do |cart_item| %>
+<% @cart_item.each do |cart_item| %>
     <tr>
         <td>い<%= cart_item.item.with_tax_price %></td>
         <td>ろ<%= cart_item.subtotal %></td>
