@@ -4,8 +4,10 @@ class Public::CartItemsController < ApplicationController
 
   def index
     #@cart_items = current_customer.cart_items.all
-    @cart_items = cart_items.all
-    #@total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @cart_items = CartItem.all
+    
+
+    @total = @cart_items.inject(0) { |sum, item| sum + @item.price * amount }
   end
 
   def create
@@ -53,25 +55,20 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def subtotal
-    item.with_tax_price * amount
-  end
 
-  def total
-  end
 
-  def with_tax_price
-    (price * 1.1).floor
-  end
 
-  def sum_of_price
-    item.price * amount
-  end
+
+
+
+  #def sum_of_price
+    #item.price * amount
+  #end
 
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount, :cusotmer_id)
   end
 
 
