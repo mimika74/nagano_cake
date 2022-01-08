@@ -40,6 +40,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_item = CartItem.find(params[:id])
      if @cart_item.destroy
       flash[:notice] = 'カート内のギフトが削除されました'
      else
@@ -49,7 +50,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    if @cart_item.destroy_all
+    @cart_items = current_customer.cart_items
+    if @cart_items.destroy_all
       flash[:notice] = 'カート内のギフトが削除されました'
     else
       flash[:alert] = '削除に失敗しました'
