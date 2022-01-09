@@ -1,0 +1,24 @@
+<h4>注文情報入力</h4>
+
+
+
+<div class="field">
+  <p>支払方法</p>
+  <%= form_with model: @order, url: orders_comfirm_path, local:true do |f| %>
+  <div class="radio-inline">
+    <%= f.radio_button :payment_method, :credit_card, checked: "checked" %>
+    <%= f.label :クレジット %>
+  </div>
+  <div class="radio-inline">
+    <%= f.radio_button :payment_method, :transfer %>
+    <%= f.label :銀行振込 %>
+  </div>
+  
+  
+  
+    <%= f.submit '確認画面へ進む' %>
+
+   <% end %>
+
+
+</div>

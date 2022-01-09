@@ -1,29 +1,35 @@
 <h2>顧客マイページ</h2>
 
+<p><%= link_to "配送先の登録", </p>
 
-
-<p>姓</p>
+<p>姓
 <%= @customer.last_name %>
+</p>
 
-<p>名</p>
+<p>名
 <%= @customer.first_name %>
-
-<p>姓カナ</p>
+</p>
+<p>姓カナ
 <%= @customer.last_name_kana %>
-
-<p>名カナ</p>
+</p>
+<p>名カナ
 <%= @customer.first_name_kana %>
-
-<p>メールアドレス</p>
+</p>
+<p>メールアドレス
 <%= @customer.email %>
+</p>
 
 
+<p>郵便番号
+<%#= @cusotmer.postal_code %>
+</p>
 
-<p>郵便番号</p>
-<%= @cusotmer.postal_code %>
 
+<p>住所
+<%#= @cusotmer.address %>
+</p>
 
-<p>住所</p>
-<%= @cusotmer.address %>
+<p>電話番号
+<%#= @cusotmer.telephone_number %>
+</p>
 
-<p>電話番号</p>

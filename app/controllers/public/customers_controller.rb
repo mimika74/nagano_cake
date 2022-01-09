@@ -1,15 +1,9 @@
 class Public::CustomersController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def show
-
-    #if @customer != current_customer
-     # redirect_to "/"
-   # else
-
-      @customer == current_customer
-
-
-    #end
+    @customer = current_customer
   end
 
   def edit
