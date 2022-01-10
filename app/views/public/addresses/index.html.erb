@@ -1,0 +1,38 @@
+配送先情報
+
+<p>ご自身の住所</p>
+
+<% if @customer_address.present? %>
+<%= @customer_address %>
+<% end %>
+
+<p>登録済みのご住所</p>
+
+
+<% @addresses.each do |address| %>
+<div>
+
+  <p>郵便番号：<%= address.postal_code %></p>
+  <p>住所：<%= address.address %></p>
+  <p>宛名：<%= address.name %></p>
+
+
+</div>
+
+<% end %>
+
+<p>新しいお届け先</p>
+
+  <%= form_with model: @address, url: addresses_path, local:true do |f| %>
+
+  <h4>郵便番号</h4>
+  <%= f.text_field :postal_code %>
+  <h4>住所</h4>
+  <%= f.text_area :address %>
+  <%= f.submit '登録' %>
+ <% end %>
+
+
+
+
+
