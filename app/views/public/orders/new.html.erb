@@ -13,9 +13,30 @@
     <%= f.radio_button :payment_method, :transfer %>
     <%= f.label :銀行振込 %>
   </div>
-  
-  
-  
+
+
+<p>ご自身の住所(初回登録時の住所）</p>
+
+<%= f.radio_button :address_id, "0" %>
+<%= f.label :customer_customer %>
+
+
+ご登録済みの住所
+<%= f.radio_button :address_id, "1" %>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+
+
+新しい配送先
+<%= f.radio_button :address_id, "2" %>
+   <%#= form_with model: @address, url: addresses_path, local:true do |f| %>
+    <h4>郵便番号</h4>
+    <%= f.text_field :postal_code %>
+    <h4>住所</h4>
+    <%= f.text_area :address %>
+    <%#= f.submit '登録' %>
+
+
+
     <%= f.submit '確認画面へ進む' %>
 
    <% end %>
