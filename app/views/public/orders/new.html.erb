@@ -15,19 +15,20 @@
   </div>
 
 
-<p>ご自身の住所(初回登録時の住所）</p>
+<p>配送先</p>
+<p><%= f.radio_button :address_id, "0" %>ご自身の住所(初回登録時の住所）</p>
 
-<%= f.radio_button :address_id, "0" %>
-<%= f.label :customer_customer %>
+<%#= f.label :current_customer %>
+<%#= @customer_address.postal_code %>
+<%= @customer_address %>
 
+<p><%= f.radio_button :address_id, "1" %>ご登録済みの住所</p>
 
-ご登録済みの住所
-<%= f.radio_button :address_id, "1" %>
 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
 
 
-新しい配送先
-<%= f.radio_button :address_id, "2" %>
+<p><%= f.radio_button :address_id, "2" %>新しい配送先</p>
+
    <%#= form_with model: @address, url: addresses_path, local:true do |f| %>
     <h4>郵便番号</h4>
     <%= f.text_field :postal_code %>
