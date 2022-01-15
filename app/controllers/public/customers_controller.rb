@@ -2,13 +2,14 @@ class Public::CustomersController < ApplicationController
 
   before_action :authenticate_customer!
 
+
   def show
     @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
-    if @customer == current_user
+    @customer = current_customer
+    if @customer == current_customer
       render "edit"
     else
       redirect_to "/"
@@ -35,7 +36,10 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path, alert: "ご利用誠にありがとうございました。"
+    #redirect_to customers_withdraw_path, alert: "ご利用誠にありがとうございました。"
   end
+
+
 
 
 private
