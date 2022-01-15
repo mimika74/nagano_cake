@@ -1,1 +1,5 @@
 退会画面
+
+退会しますか？
+<%= link_to "はい", customers_withdraw_path, method: :patch, data:{confirm:'本当に退会しますか？'} %>
+<%= link_to "いいえ",  customers_my_page_path %>

@@ -1,10 +1,10 @@
 class Public::CartItemsController < ApplicationController
 
-  before_action :authenticate_customer!,except: [:index]
+  #before_action :authenticate_customer!,except: [:index]
 
   def index
-    #@cart_items = current_customer.cart_items.all
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
+    #@cart_items = CartItem.all
 
 
 
@@ -20,8 +20,11 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
 
+
+
     #cart.cart_item.create!(item_id: item.id)
     if  @cart_item.save!
+
       flash[:notice] = '商品が追加されました。'
       redirect_to items_path
     else
@@ -72,7 +75,7 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount, :cusotmer_id)
+    params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 
 

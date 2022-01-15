@@ -16,6 +16,7 @@
   <p>住所：<%= address.address %></p>
   <p>宛名：<%= address.name %></p>
 <%= link_to "edit", edit_address_path(address.id) %>
+<%= link_to 'Destroy', address_path(address.id), method: :delete %>
 
 </div>
 
