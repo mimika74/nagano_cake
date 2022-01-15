@@ -3,8 +3,8 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
 
-
-    @customer_address = Address.where(current_customer_id:current_customer.id)
+    @customer_address = current_customer
+    #@customer_address = Address.where(current_customer_id:current_customer.id)
 
   end
 
@@ -21,9 +21,9 @@ class Public::OrdersController < ApplicationController
 
     elsif params[:order][:address_id] == "1"
 
-      @order.postal_code = Address.find(params[:order][:id]).postal_code
-      @order.address = Address.find(params[:order][:id]).address
-      @order.name = Address.find(params[:order][:id]).name
+      @order.postal_code = Address.find(params[:order][:address_id]).postal_code
+      @order.address = Address.find(params[:order][:address_id]).address
+      @order.name = Address.find(params[:order][:address_id]).name
     elsif params[:order][:address_id] == "2"
       @address = Address.new(address_params)
       @address.postal_code = params[:order][:postal_code]

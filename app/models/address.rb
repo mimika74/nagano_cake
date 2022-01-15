@@ -5,5 +5,5 @@ class Address < ApplicationRecord
 end
 
 def full_address
-    '〒' + postal_code + ' ' + address + ' ' 
+    '〒' + postal_code + ' ' + address + ' ' + name + '様'
 end

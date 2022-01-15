@@ -1,0 +1,58 @@
+
+
+<div class="container">
+  <p>
+<h4>
+ <div class ="row">
+   <div class = "bg-light">
+ 注文情報確認
+   </div>
+ </div>
+ </h4>
+ </p>
+
+ <%= form_with model: @order, url: orders_path, local:true do |f| %>
+<center>
+<div class="card" style="width: 60rem;">
+
+     <ul class="list-group list-group-flush">
+     <table>
+      <thead>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+
+      </thead>
+     </ul>
+
+</div>
+    <tbody>
+    <% @total = 0 %>
+    <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td>
+              <%= cart_item.subtotal %>
+              <% @total += cart_item.subtotal %>
+          </td>
+
+        </tr>
+    <% end %>
+
+    </tbody>
+</table>
+
+</center>
+<p align ="right">送料:800</p>
+<p align ="right">
+合計金額:<%= @total %></p>
+<p align ="right">請求金額:<%= @total += 800 %></p>
+
+  </div>
+</div>
+   <%= f.submit '注文を確定する' %>
+<% end %>
+
