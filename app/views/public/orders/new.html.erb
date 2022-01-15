@@ -4,7 +4,7 @@
 
 <div class="field">
   <p>支払方法</p>
-  <%= form_with model: @order, url: orders_comfirm_path, local:true do |f| %>
+  <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
   <div class="radio-inline">
     <%= f.radio_button :payment_method, :credit_card, checked: "checked" %>
     <%= f.label :クレジット %>
@@ -20,7 +20,7 @@
 
 <%#= f.label :current_customer %>
 <%#= @customer_address.postal_code %>
-<%= @customer_address %>
+<%#= @customer_address.address %>
 
 <p><%= f.radio_button :address_id, "1" %>ご登録済みの住所</p>
 
@@ -35,6 +35,7 @@
     <h4>住所</h4>
     <%= f.text_area :address %>
     <%#= f.submit '登録' %>
+    <%= f.text_field :name %>
 
 
 

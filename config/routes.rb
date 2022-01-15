@@ -67,7 +67,7 @@ end
 
     end
     get 'orders/complete' => 'public/orders#complete'
-    post 'orders/comfirm' => 'public/orders#comfirm'
+    post 'orders/confirm' => 'public/orders#confirm'
 
     scope module: :public do
       resources :addresses, only: [:edit, :create, :index, :update, :destroy]

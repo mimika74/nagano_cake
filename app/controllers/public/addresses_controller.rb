@@ -23,23 +23,23 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
-     @customer_address = current_customer.address
+     @customer_address = Address.find(params[:id])
      #@address.customer_id = current_customer.id
-     if @customer_address = current_customer.address
-       render "edit"
-     else
-       redirect_to root_path
-     end
+     #if @customer_address = current_customer.address
+       #render "edit"
+     #else
+       #redirect_to root_path
+     #end
 
   end
 
   def update
      flash[:notice] ="You have updated  successfully."
 
-    @customer_address = current_customer.address
+    @customer_address = Address.find(params[:id])
 
-    @address.update(address_params)
-    if @address.save
+    @customer_address.update(address_params)
+    if @customer_address.save
     redirect_to addresses_path
     else
     render :edit
