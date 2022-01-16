@@ -54,12 +54,15 @@ class Public::OrdersController < ApplicationController
 
 
     if  @order.save
+      @order_detail = OrderDetail.new
 
-      #flash[:notice] = '商品が追加されました。'
+      if @order_detail.save
       redirect_to orders_complete_path
+      else
+      render :new
+      end
     else
-      #flash[:alert] = '商品の追加に失敗しました。'
-      redirect_to orders_confirm_path
+      redirect_to new_orders_path
     end
   end
 
@@ -85,6 +88,10 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
   params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+  end
+
+  def order_detail_params
+  params.require(:order_detail).permit(:order_id, :item_id, :price, :amount, :making_status)
   end
 
 

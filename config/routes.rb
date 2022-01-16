@@ -66,9 +66,10 @@ end
     scope module: :public do
       resources :orders, only: [:new, :create, :index, :show]
 
+    get 'orders/complete' => 'orders#complete', as: :orders_complete
+    post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
+
     end
-    get 'orders/complete' => 'public/orders#complete'
-    post 'orders/confirm' => 'public/orders#confirm'
 
     scope module: :public do
       resources :addresses, only: [:edit, :create, :index, :update, :destroy]
