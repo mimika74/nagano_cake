@@ -6,12 +6,14 @@
   <p>支払方法</p>
   <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
   <div class="radio-inline">
-    <%= f.radio_button :payment_method, :credit_card, checked: "checked" %>
-    <%= f.label :クレジット %>
+    <%#= f.radio_button :payment_method, 0, checked: "checked" %>
+    <%#= f.label :クレジット %>
+    <%= f.collection_radio_buttons :payment_method, Order.payment_methods_i18n, :first, :last %>
+
   </div>
   <div class="radio-inline">
-    <%= f.radio_button :payment_method, :transfer %>
-    <%= f.label :銀行振込 %>
+    <%#= f.radio_button :payment_method, 1 %>
+    <%#= f.label :銀行振込 %>
   </div>
 
 

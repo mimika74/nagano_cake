@@ -67,16 +67,19 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.customer_id = current_customer.id
 
+
   end
 
   def index
     @order = current_customer.order.all
+    @cart_items = current_customer.cart_items
 
   end
 
   def show
-    #@order = Order.find(params[:id])
-    #@order.customer_id = current_customer.id
+    @order = Order.find(params[:id])
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items
   end
 
   private
