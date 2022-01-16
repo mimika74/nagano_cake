@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     #@address = Address.find(params[:order][:address_id])
     #@address = Address.find(params[:address])
-
+    @cart_items = current_customer.cart_items.all
 
     if params[:order][:address_id] == "0"
       @order.postal_code = current_customer.postal_code
@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
       @order.address = Address.find(params[:order][:address_id]).address
       @order.name = Address.find(params[:order][:address_id]).name
     elsif params[:order][:address_id] == "2"
-      @address = Address.new(address_params)
+      @address = Address.new
       @address.postal_code = params[:order][:postal_code]
       @address.address = params[:order][:address]
       @address.name = params[:order][:name]
@@ -49,15 +49,34 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+
+
+    if  @order.save
+
+      #flash[:notice] = '商品が追加されました。'
+      redirect_to orders_complete_path
+    else
+      #flash[:alert] = '商品の追加に失敗しました。'
+      redirect_to orders_confirm_path
+    end
   end
 
   def complete
+    @order = Order.find(params[:id])
+    @order.customer_id = current_customer.id
+
   end
 
   def index
+    @order = current_customer.order.all
+
   end
 
   def show
+    #@order = Order.find(params[:id])
+    #@order.customer_id = current_customer.id
   end
 
   private
@@ -65,9 +84,7 @@ class Public::OrdersController < ApplicationController
   params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
   end
 
-  def address_params
-  params.require(:address).permit(:customer_id, :postal_code, :address, :name)
-  end
+
 
 
 
