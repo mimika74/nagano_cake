@@ -9,11 +9,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     #@address = Address.find(params[:order][:address_id])
     #@address = Address.find(params[:address])
     @cart_items = current_customer.cart_items.all
-
+    p @order.customer_id
     if params[:order][:address_id] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -49,26 +51,28 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
 
 
-    if  @order.save
-      @order_detail = OrderDetail.new
+    order = Order.new(order_params)
+    cart_items = current_customer.cart_items
+    if cart_items.exists?
+      order.save
+      cart_items.each do |cart_item|
 
-      if @order_detail.save
-      redirect_to orders_complete_path
-      else
-      render :new
+      item = Item.find_by(id: cart_item.item_id)
+
+      order_detail = OrderDetail.new(order_id: order.id, item_id: item.id, price: item.with_tax_price, amount: cart_item.amount)
+      order_detail.save
       end
+      redirect_to orders_complete_path
     else
-      redirect_to new_orders_path
+      redirect_to new_order_path
     end
+
   end
 
   def complete
-    @order = Order.find(params[:id])
-    @order.customer_id = current_customer.id
+
 
 
   end

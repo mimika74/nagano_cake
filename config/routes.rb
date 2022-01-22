@@ -64,9 +64,10 @@ end
     delete 'cart_items/:id' => 'public/cart_items#destroy', as: :cart_item
 
     scope module: :public do
+    get 'orders/complete' => 'orders#complete', as: :orders_complete
       resources :orders, only: [:new, :create, :index, :show]
 
-    get 'orders/complete' => 'orders#complete', as: :orders_complete
+
     post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
 
     end

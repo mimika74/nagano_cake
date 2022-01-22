@@ -6,6 +6,6 @@ class Order < ApplicationRecord
 
 
   enum payment_method: { credit_card: 0, transfer: 1 }
-  enum status: { id0: 0, id1: 1, id2: 2, id3: 3, id4: 4 }
+  enum status: { waiting: 0, paid_up: 1, making: 2, preparing: 3, shipped: 4 }
 
 end

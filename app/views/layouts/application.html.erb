@@ -18,6 +18,7 @@
         <%= link_to "商品一覧", items_path %>
         <%= link_to "カート", cart_items_path %>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        こんにちは！<%= current_customer.last_name %>様
       </li>
     <% else %>
       <li>

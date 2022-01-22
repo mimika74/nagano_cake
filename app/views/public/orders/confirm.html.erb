@@ -11,7 +11,7 @@
  </h4>
  </p>
 
- <%= form_with model: @order, url: orders_path, local:true do |f| %>
+
 <center>
 <div class="card" style="width: 60rem;">
 
@@ -28,8 +28,9 @@
 
 </div>
     <tbody>
-    <% @total = 0 %>
-    <% @cart_items.each do |cart_item| %>
+    <%= form_with model: @order_detail, url: orders_confirm_path, local:true do |f| %>
+      <% @total = 0 %>
+      <% @cart_items.each do |cart_item| %>
         <tr>
           <td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.with_tax_price %></td>
@@ -40,12 +41,15 @@
           </td>
 
         </tr>
+      <% end %>
     <% end %>
-
     </tbody>
 </table>
 
 </center>
+
+
+<%= form_with model: @order, url: orders_path, local:true do |f| %>
 <p align ="right">送料:<%= @order.shipping_cost %></p>
 <p align ="right">
 合計金額:<%= @total %></p>
@@ -65,13 +69,14 @@
   <%= f.hidden_field :address, value: @order.address %>
   <%= f.hidden_field :name, value: @order.name %>
   <%= f.hidden_field :shipping_cost, value: @order.shipping_cost %>
-  <%= f.hidden_field :total_payment, value: @total += @order.shipping_cost %>
+  <%= f.hidden_field :total_payment, value: @total %>
   <%= f.hidden_field :status, value: @order.status %>
   <%= f.hidden_field :customer_id, value: @order.customer_id %>
-  <%= f.hidden_field :price, value: @total %>
-  <%= f.hidden_field :amount, value: @cart_item.amount %>
-  <%= f.hidden_field :making_status, value: @order_detail.making_status %>
 
+
+  <%#= f.hidden_field :making_status, value: @order.making_status %>
+  <%#= f.hidden_field :amount, value: @cart_items.amount %>
+  <%#= f.hidden_field :price, value: @total %>
 
   <%= f.submit '注文を確定する' %>
 

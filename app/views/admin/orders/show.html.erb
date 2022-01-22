@@ -1,4 +1,58 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+
 
 注文履歴詳細画面
+
+ <% @orders.each do |order| %>
+
+  <center>
+    <div class="card" style="width: 60rem;">
+
+     <ul class="list-group list-group-flush">
+     <table>
+      <thead>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+
+      </thead>
+     </ul>
+
+    </div>
+    <tbody>
+    <% @total = 0 %>
+    <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td>
+              <%= cart_item.subtotal %>
+              <% @total += cart_item.subtotal %>
+          </td>
+
+        </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+
+  </center>
+  <p align ="right">送料:500</p>
+  <p align ="right">
+  合計金額:<%= @total %></p>
+  <p align ="right">請求金額:<%= @total += 500 %></p>
+
+    </div>
+  </div>
+  <p>支払方法<%= order.payment_methods_i18n　%></p>
+
+  <p>お届け先　〒<%= @order.postal_code %>
+       <%= @order.address %> </p>
+     <p> <%= @order.name %> </p>
+
+  <%= link_to "Back", orders_path %>
+<% end %>
+
+
+

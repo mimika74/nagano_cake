@@ -34,10 +34,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(amount: params[:amount].to_i)
-      flash[:notice] = 'カート内のギフトが更新されました'
+      flash[:notice] = 'カート内が更新されました'
     else
-    flash[:alert] = 'カート内のギフトの更新に失敗しました'
+    flash[:alert] = 'カート内の更新に失敗しました'
     redirect_to cart_items_path
     end
   end
@@ -45,7 +46,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
      if @cart_item.destroy
-      flash[:notice] = 'カート内のギフトが削除されました'
+      flash[:notice] = 'カート内が削除されました'
      else
       flash[:alert] = '削除に失敗しました'
      end

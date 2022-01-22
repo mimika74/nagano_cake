@@ -8,11 +8,11 @@ ja:
 
 
       status:
-        id0: '入金待ち'
-        id1: '入金確認'
-        id2: '製作中'
-        id3: '発送準備'
-        id4: '発送済'
+        waiting: '入金待ち'
+        paid_up: '入金確認'
+        making: '製作中'
+        preparing: '発送準備'
+        shipped: '発送済'
 
       making_status:
         id0: '制作不可'
