@@ -1,6 +1,6 @@
 注文履歴一覧
 
-<% @orders.each do |order| %>
+
 
 <center>
 <div class="card" style="width: 60rem;">
@@ -8,30 +8,31 @@
      <ul class="list-group list-group-flush">
      <table>
       <thead>
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>注文商品</th>
+        <th>支払金額</th>
+        <th>ステータス</th>
+        <th>注文詳細</th>
       </thead>
      </ul>
 
 </div>
     <tbody>
-    <% @total = 0 %>
-    <% @cart_items.each do |cart_item| %>
+
+    <% @orders.each do |order| %>
         <tr>
-          <td><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.with_tax_price %></td>
-          <td><%= cart_item.amount %></td>
-          <td>
-              <%= cart_item.subtotal %>
-              <% @total += cart_item.subtotal %>
-          </td>
+          <td><%= order.created_at %></td>
+          <td><%= order.postal_code %><p> <%= order.address %></p> <p><%= order.name %></p></td>
+           <% order.order_details.each do |order_detail| %>
+              <td><%= order_detail.item.name %></td>
+           <% end %>
+          <td><%= order.total_payment %></td>
+          <td><%= order.status %></td>
+          <td><%= link_to "表示する", order_path(order.id) %> </td>
 
         </tr>
     <% end %>
     </tbody>
 </table>
 
- <%= link_to "詳細", order_path %>
-<% end %>

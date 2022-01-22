@@ -57,22 +57,27 @@ end
     patch 'customers/withdraw' => 'public/customers#withdraw'
 
 
-    get 'cart_items' => 'public/cart_items#index'
-    post 'cart_items' => 'public/cart_items#create'
-    patch 'cart_items/:id' => 'public/cart_items#update'
-    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
-    delete 'cart_items/:id' => 'public/cart_items#destroy', as: :cart_item
+    #get 'cart_items' => 'public/cart_items#index'
+    #post 'cart_items' => 'public/cart_items#create'
+    #patch 'cart_items/:id' => 'public/cart_items#update', as: :cart_item
+    #delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
+    #delete 'cart_items/:id' => 'public/cart_items#destroy', as: :cart_item
+
 
     scope module: :public do
+      resources :cart_items, only: [:update, :index, :create, :destroy]
+      delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
+
     get 'orders/complete' => 'orders#complete', as: :orders_complete
       resources :orders, only: [:new, :create, :index, :show]
 
 
     post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
 
-    end
 
-    scope module: :public do
+
+
       resources :addresses, only: [:edit, :create, :index, :update, :destroy]
 
     end

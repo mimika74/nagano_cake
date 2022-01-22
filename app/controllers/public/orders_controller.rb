@@ -56,15 +56,19 @@ class Public::OrdersController < ApplicationController
     order = Order.new(order_params)
     cart_items = current_customer.cart_items
     if cart_items.exists?
+
       order.save
       cart_items.each do |cart_item|
 
       item = Item.find_by(id: cart_item.item_id)
 
       order_detail = OrderDetail.new(order_id: order.id, item_id: item.id, price: item.with_tax_price, amount: cart_item.amount)
+
       order_detail.save
       end
+      cart_items.destroy_all
       redirect_to orders_complete_path
+
     else
       redirect_to new_order_path
     end
@@ -78,8 +82,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = current_customer.order.all
-    @cart_items = current_customer.cart_items
+
+   # @order.customer_id = current_customer.id
+    #@cart_items = current_customer.cart_items
+    @orders = current_customer.orders
+
+
+
+
 
   end
 
