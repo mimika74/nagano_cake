@@ -76,27 +76,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-
-
-
   end
 
   def index
-
    # @order.customer_id = current_customer.id
     #@cart_items = current_customer.cart_items
     @orders = current_customer.orders
-
-
-
-
-
   end
 
   def show
     @order = Order.find(params[:id])
-    @order.customer_id = current_customer.id
-    @cart_items = current_customer.cart_items
+
+    #@orders = current_customer.order
+    #@order_details = OrderDetail.find(order_params)
+    @order_details = @order.order_details
+
+    #@order.customer_id = current_customer.id
+    #@cart_items = current_customer.cart_items
   end
 
   private
