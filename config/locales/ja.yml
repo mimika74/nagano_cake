@@ -19,3 +19,7 @@ ja:
         id1: '製作待ち'
         id2: '製作中'
         id3: '製作完了'
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

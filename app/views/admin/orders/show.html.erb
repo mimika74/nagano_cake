@@ -1,11 +1,18 @@
 
 
-注文履歴詳細画面
 
- <% @orders.each do |order| %>
+注文履歴詳細
 
-  <center>
-    <div class="card" style="width: 60rem;">
+<table>
+ <tr><th>購入者</th><td><%= @order.name %></td></tr>
+ <tr><th>注文日</th><td><%= l @order.created_at %></td></tr>
+ <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
+ <tr><th>配送先</th><td>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></td></tr>
+ <tr><th>注文ステータス</th><td><%= @order.status_i18n %></td></tr>
+</table>
+
+
+<div class="card" style="width: 60rem;">
 
      <ul class="list-group list-group-flush">
      <table>
@@ -14,45 +21,31 @@
         <th>単価(税込)</th>
         <th>数量</th>
         <th>小計</th>
-
+        <th>製作ステータス</th>
       </thead>
      </ul>
-
-    </div>
+</div>
     <tbody>
-    <% @total = 0 %>
-    <% @cart_items.each do |cart_item| %>
+    <% @order_details.each do |order_detail| %>
         <tr>
-          <td><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.with_tax_price %></td>
-          <td><%= cart_item.amount %></td>
-          <td>
-              <%= cart_item.subtotal %>
-              <% @total += cart_item.subtotal %>
-          </td>
-
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.item.with_tax_price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.price * order_detail.amount %></td>
+          <td><%= order_detail.making_status_i18n %></td>
         </tr>
     <% end %>
-
     </tbody>
-  </table>
+</table>
 
-  </center>
-  <p align ="right">送料:500</p>
-  <p align ="right">
-  合計金額:<%= @total %></p>
-  <p align ="right">請求金額:<%= @total += 500 %></p>
+<p align ="right">商品合計:<%= @total = (@order.total_payment - @order.shipping_cost).to_s %></p>
 
-    </div>
-  </div>
-  <p>支払方法<%= order.payment_methods_i18n　%></p>
+<p align ="right">送料:<%= @order.shipping_cost %></p>
 
-  <p>お届け先　〒<%= @order.postal_code %>
-       <%= @order.address %> </p>
-     <p> <%= @order.name %> </p>
+<p align ="right">請求金額合計:<%= @order.total_payment.to_s %>円</p>
 
-  <%= link_to "Back", orders_path %>
-<% end %>
+
+<%= link_to "Back", admin_homes_top_path %>
 
 
 
