@@ -23,9 +23,9 @@ class Public::OrdersController < ApplicationController
 
     elsif params[:order][:address_id] == "1"
 
-      @order.postal_code = Address.find(params[:order][:address_id]).postal_code
-      @order.address = Address.find(params[:order][:address_id]).address
-      @order.name = Address.find(params[:order][:address_id]).name
+      @order.postal_code = Address.find(params[:order][:address_number]).postal_code
+      @order.address = Address.find(params[:order][:address_number]).address
+      @order.name = Address.find(params[:order][:address_number]).name
     elsif params[:order][:address_id] == "2"
       @address = Address.new
       @address.postal_code = params[:order][:postal_code]

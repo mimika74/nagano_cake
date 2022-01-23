@@ -27,7 +27,7 @@
 
 <p><%= f.radio_button :address_id, "1" %>ご登録済みの住所</p>
 
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<%= f.select :address_number, options_from_collection_for_select(Address.all, :id, :full_address) %>
 
 
 <p><%= f.radio_button :address_id, "2" %>新しい配送先</p>

@@ -1,30 +1,34 @@
-<h2>管理者トップ画面　</h2>
-
-<div class="container px-5 px-sm-0">
-<div class="col-md-3">
-
-<h4>Item</h4>
-<%=link_to "item", admin_items_path %>
-
-<h4>genre</h4>
-<%=link_to "genre", admin_genres_path %>
-
-<h4>Customer</h4>
-<%=link_to "customer", admin_customers_index_path %>
-
-<h4>Order</h4>
 
 
-<h4>Order_details</h4>
 
-
-</div>
-
-<div class="col-md-8 offset-md-1">
   注文履歴一覧
-
-
+<center>
+<div class="card" style="width: 60rem;">
+     <ul class="list-group list-group-flush">
+     <table>
+      <thead>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </thead>
+     </ul>
 </div>
-</div>
+    <tbody>
 
-<%= link_to "Log out", destroy_admin_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %>
+    <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at %></td>
+          <td><%= order.name %></td>
+          <% order.order_details.each do |order_detail| %>
+              <td><%= order_detail.amount %></td>
+           <% end %>
+
+          <td><%= order.status %></td>
+          <td><%= link_to "表示する", order_path(order.id) %> </td>
+
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+

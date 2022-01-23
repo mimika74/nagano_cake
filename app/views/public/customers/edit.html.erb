@@ -5,20 +5,20 @@
        <h6>宛名</h6>
       <p><%= f.text_field :last_name %><%= f.text_field :first_name %></p>
       <p><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></p>
-      <h6>郵便番号</h6>
-      <label for ="inputPostalCode">Postal_code</label>
+
+      <label for ="inputPostalCode">郵便番号</label>
       <%= f.text_field:postal_code, autofocus:true, id:"inputPostalCode",placeholder:"PostalCode"  %></div>
 
-      <h6>住所</h6>
-       <label for ="inputAddress">Address</label>
+
+       <label for ="inputAddress">住所</label>
        <%#= f.text_area:address, autofocus:true, id:"inputAddress",placeholder:"Address"  %></div>
-      <%= f.text_area :address %>
-      
-      
-       <h6>電話番号</h6>
-       <label for ="inputAddress">Address</label>
+      <%= f.text_area :address, autofocus:true, id:"inputAddress",placeholder:"Address"  %>
+
+
+
+       <label for ="inputAddress">電話番号</label>
        <%#= f.text_area:address, autofocus:true, id:"inputAddress",placeholder:"Address"  %></div>
-      <%= f.text_area :address %>
+      <%= f.text_area :telephone_number,autofocus:true, id:"inputTelephoneNumber",placeholder:"Telephone_number" %>
 
       <p><%= f.submit '編集内容を保存', class: 'btn btn-success' %></p>
  <% end %>

@@ -1,4 +1,7 @@
 class Admin::OrdersController < ApplicationController
+  
+  
+  
   def show
     @order = Order.find(params[:id])
     @order.customer_id = current_customer.id
