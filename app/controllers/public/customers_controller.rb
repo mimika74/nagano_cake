@@ -9,6 +9,7 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = current_customer
+    @customer_address = current_customer
     if @customer == current_customer
       render "edit"
     else

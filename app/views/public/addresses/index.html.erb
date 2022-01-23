@@ -1,9 +1,25 @@
-配送先情報
+配送先登録/一覧
+
+
+  <%= form_with model: @address, url: addresses_path, local:true do |f| %>
+
+  <h4>郵便番号</h4>
+  <%= f.text_field :postal_code %>
+  <h4>住所</h4>
+  <%= f.text_area :address %>
+
+   <h4>お名前</h4>
+  <%= f.text_field :name %>
+  <%= f.submit '新規登録' %>
+ <% end %>
+
 
 <p>ご自身の住所(初回登録時の住所）</p>
 
 <% if @customer_address.present? %>
+<%= current_customer.postal_code %>
 <%= @customer_address %>
+<%= current_customer.last_name %><%= current_customer.first_name %>
 <% end %>
 
 <p>登録済みのご住所</p>
@@ -22,19 +38,6 @@
 
 <% end %>
 
-<p>新しいお届け先</p>
-
-  <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-
-  <h4>郵便番号</h4>
-  <%= f.text_field :postal_code %>
-  <h4>住所</h4>
-  <%= f.text_area :address %>
-
-   <h4>お名前</h4>
-  <%= f.text_field :name %>
-  <%= f.submit '登録' %>
- <% end %>
 
 
 
