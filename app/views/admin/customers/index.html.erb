@@ -1,11 +1,26 @@
 
+<div class="container">
+  <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
 
-顧客一覧画面
+   <h5><p class = "bg-light mt-3">顧客一覧画面</p></h5>
+    <table>
+      <thead>
+        <tr>
+           <th>会員ID</th>
+            <th>氏名</th>
+             <th>メールアドレス</th>
+         <th></th>
+         <th></th>
+         <th colspan="4"></th>
+        </tr>
+      </thead>
+  <tbody>
 
-<p>
- <% @customers.each do |customer| %>
+     <% @customers.each do |customer| %>
       <tr>
-
+            <td><%= customer.id %></td>
+            <td><%= customer.last_name %><%= customer.first_name %></td>
             <td><%= customer.email %></td>
             <%= link_to "edit", admin_customers_edit_path(customer.id) %>
             <%= link_to "show", admin_customers_show_path(customer.id) %>
@@ -13,9 +28,13 @@
 
 
       </tr>
-    <% end %>
-</p>
+     <% end %>
 
-<p>
-  <%= link_to "back", admin_homes_top_path %>
-</p>
+
+
+  <%#= link_to "back", admin_homes_top_path %>
+  </tbody>
+</table>
+ </div>
+ </div>
+ </div>
