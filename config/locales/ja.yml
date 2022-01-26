@@ -14,6 +14,7 @@ ja:
         preparing: '発送準備'
         shipped: '発送済'
 
+    order_detail:
       making_status:
         id0: '制作不可'
         id1: '製作待ち'
