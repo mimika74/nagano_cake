@@ -30,7 +30,8 @@ end
     get '/' => 'homes#top', as: :homes_top
     resources :items
     get 'orders/:id' => 'orders#show', as: :orders_show
-    get 'customers' => 'customers#index', as: :customers_index
+    patch 'orders/:id' => 'orders#update', as: :orders_update
+    get 'customers' =>'customers#index', as: :customers_index
     get 'customers/:id' => 'customers#show', as: :customers_show
     get 'customers/:id/edit' => 'customers#edit', as: :customers_edit
     patch 'customers/:id' => 'customers#update', as: :customers_update

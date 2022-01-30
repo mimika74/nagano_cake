@@ -16,6 +16,10 @@ class Customer < ApplicationRecord
   validates :telephone_number, presence:true
   validates :postal_code, presence:true
 
+   enum is_deleted: { available: false, withdraw: true }
 
+  def full_name
+    last_name + first_name
+  end
 
 end

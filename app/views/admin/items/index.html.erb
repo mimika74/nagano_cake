@@ -1,34 +1,55 @@
-<h1>商品一覧</h1>
 
-
-<%= link_to "addItem", new_admin_item_path %>
-<%= link_to "back", admin_homes_top_path %>
 
 <div class="container">
+  <div class="row">
+  <div class="mx-5 col-sm-6 col-md-6 col-lg-5 px-1 px-sm-1">
 
-<table class="table table-hover table-inverse">
-<tbody>
-  <tr>
-<% @items.each do |item| %>
-<div>
-  <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
-
-  <p>商品名：<%= item.name %></p>
-  <p>商品説明：<%= item.introduction %></p>
-  <p>ジャンル: <%= item.genre.name %></p>
-
-  <p>価格</p>
-  <%= item.price %>
-
-  <p>投稿日時：<%= item.created_at.strftime('%Y/%m/%d') %></p>
-
-  <%= link_to "Show", admin_item_path(item.id) %>
-  <%= link_to "Edit", edit_admin_item_path(item.id) %>
-</div>
-<% end %>
-</tr>
-</tbody>
+   <h5><div class = "bg-light mt-3 col-3 md-2">
+   商品一覧</div></h5>
+   <div class ="pull-right">
+   <%=link_to new_admin_item_path, class: "btn btn-outline-secondary rounded-circle" do %>
+   <i class="fas fa-plus"></i>
+   <% end %></div>
+  </div>
+ </div>
+ </div>
+<!--<table class="table table-hover table-inverse"> -->
+<center>
+<table class="table col-md-5">
+   <thead class="thead-light">
+    <tr>
+    <td>商品ID</td>
+    <td>商品名</td>
+    <td>税抜価格</td>
+    <td>ジャンル</td>
+    <td>ステータス</td>
+    </tr>
+   </thead>
+   <tbody>
+   <% @items.each do |item| %>
+   <tr>
+    <td><%= item.id %></td>
+    <td><%= link_to admin_item_path(item.id) do %>
+          <%= item.name %>
+        <% end %></td>
+    <td><%= item.price %></td>
+    <td><%= item.genre.name %></td>
+    <div class ="text-success">
+    <% item.order_details.each do |order_detail| %>
+    <td><%= order_detail.making_status_i18n %></td>
+    <% end %></div>
+   </tr>
+   <% end %>
+   </tbody>
 </table>
-</div>
+
+
+
+<%= link_to "back", admin_homes_top_path %>
+</center>
+<!--<%#= item.created_at.strftime('%Y/%m/%d') %> -->
+
+ <%#= link_to "Show", admin_item_path(item.id) %>
+  <%#= link_to "Edit", edit_admin_item_path(item.id) %>
 
 

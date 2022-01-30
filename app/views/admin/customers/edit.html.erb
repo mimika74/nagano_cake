@@ -1,14 +1,99 @@
-<h1>顧客編集画面</h1>
+
+<div class="container">
+  <div class="row">
+     <div class="mx-5 col-sm-6 col-md-6 col-lg-5 px-1 px-sm-1">
+
+   <h5><p class = "bg-light mt-3 col-8 md-4"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</p></h5>
 
 <%= form_with model: @customer, url:admin_customers_update_path(@customer.id), local:true do |f| %>
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">会員ID</label>
+    <div class="col-sm-6">
+        <%= @customer.id %>
+    </div>
+</div>
 
-<%= @customer.email %>
-<%= f.select :is_deleted, [['退会',true],['会員',false]] %>
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">氏名</label>
+    <div class="col-sm-6">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+            <div class="d-flex justify-content-around  flex-row-reverse ">
+            <%= f.text_field :last_name %>
+            </div>
+            <div class="btn-group"><%= f.text_field :first_name %>
+            </div>
 
-<%= f.submit "更新" %>
+            </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">フリガナ</label>
+    <div class="col-sm-6">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+            <div class="d-flex justify-content-around  flex-row-reverse ">
+                <%= f.text_field :last_name_kana %> </div>
+            <div class="btn-group"><%= f.text_field :first_name_kana %></div>
+            </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">郵便番号</label>
+    <div class="col-sm-6">
+        <%= f.text_field :postal_code %>
+    </div>
+</div>
+
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">住所</label>
+    <div class="col-sm-6">
+        <%= f.text_field :address %>
+    </div>
+</div>
+
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">電話番号</label>
+    <div class="col-sm-6">
+        <%= f.text_field :telephone_number %>
+    </div>
+</div>
+
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">メールアドレス</label>
+    <div class="col-sm-6">
+        <%= f.text_field :email %>
+    </div>
+</div>
+
+<div class="row">
+  <label for="id" class="col-sm-4 col-form-label">会員ステータス</label>
+    <div class="col-sm-6">
+      <%= f.collection_radio_buttons :is_deleted, Customer.is_deleteds_i18n, :first, :last %>
+    </div>
+</div>
+
+
+
+<%= f.submit "変更を保存", class: "btn btn-success" %>
 
 <% end %>
 
-</center>
 
-<%= link_to "back", admin_customers_index_path %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

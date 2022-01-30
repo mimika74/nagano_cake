@@ -21,6 +21,16 @@ ja:
         id2: '製作中'
         id3: '製作完了'
 
+
+    customer:
+      is_deleted:
+        withdraw: "退会"
+        available: "有効"
+
+
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+
+

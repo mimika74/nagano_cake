@@ -16,7 +16,15 @@
  <tr><th>注文日</th><td><%= l @order.created_at %></td></tr>
  <tr><th>支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
  <tr><th>配送先</th><td>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></td></tr>
- <tr><th>注文ステータス</th><td><%= @order.status_i18n %></td></tr>
+ <tr><th>注文ステータス<%= @order.status_i18n %>
+ <%= form_with model: @order, url:admin_orders_update_path(@order.id), method: :patch do |f| %>
+  <%#= f.select :status, Order.statuses_i18n, [["waiting","0"],["paid_up","1"],["making","2"],["preparing","3"],["shipped","4"]] %>
+  <%= f.select :status, Order.statuses_i18n.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+  <%= f.submit "変更", class: 'btn btn-success' %>
+  <% end %>
+
+
+ </td></tr>
 </table>
 
 

@@ -2,25 +2,25 @@
 
 <div class="container">
   <div class="row">
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+  <div class="mx-5 col-sm-6 col-md-6 col-lg-5 px-1 px-sm-1">
 
-   <h5><p class = "bg-light mt-3">
+   <h5><p class = "bg-light mt-3 col-4 md-3">
   注文履歴一覧 </p></h5>
-  </div>
- </div>
- </div>
+      </div>
+     </div>
+     </div>
 <center>
 
     <!--
 <div class="card" style="width: 60rem;">
      <ul class="list-group list-group-flush"> -->
-     <table class="table mx-2">
+     <table class="table col-md-5">
       <thead class="thead-light">
-        <tr>
-        <th>購入日時</th>
+        <tr><th>購入日時</th>
         <th>購入者</th>
         <th>注文個数</th>
         <th>注文ステータス</th>
+
         </tr>
       </thead>
 
@@ -45,3 +45,4 @@
 
 
 <%= paginate @orders %>
+<col class="col-md-1"></col>
