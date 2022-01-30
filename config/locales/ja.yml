@@ -27,6 +27,11 @@ ja:
         withdraw: "退会"
         available: "有効"
 
+    item:
+      is_active:
+        on_sale: "販売中"
+        stopping_sale: "販売停止中"
+
 
   time:
     formats:
