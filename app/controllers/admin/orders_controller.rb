@@ -13,9 +13,9 @@ class Admin::OrdersController < ApplicationController
     #@customer = current_customer
     @order = Order.find(params[:id])
 
-    if @order.status.update(order_params)
+    if @order.update(order_params)
 
-     redirect_to admin_orders_show_path
+     redirect_to admin_orders_show_path(@order.id)
     else
       render :show
     end

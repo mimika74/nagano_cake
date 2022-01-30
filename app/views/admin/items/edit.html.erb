@@ -1,26 +1,55 @@
-<h2>商品編集画面</h2>
+<div class="container">
+  <div class="row">
+   <h5><div class = "bg-light mt-4 col-12 md-6">
+    商品編集画面</div></h5>
 
+
+<div class="mt-5 col-12  mx-auto px-6">
   <%= form_with model: @item, url: admin_item_path(@item.id), local:true do |f| %>
-    <div> <label for ="inputName">商品名</label>
+<div class="container">
+  <div class ="row">
+    <label for="id" class="col-sm-4 mb-4 ">商品画像</label>
+    <div class="col-sm-8">
+    <%= f.attachment_field :image, placeholder: "ファイルを選択" %></div>
+  </div>
+  <div class ="row">
+    <label for="id" class="col-sm-4 mb-4 text-left">商品名</label>
+    <div class="col-sm-8">
     <%= f.text_field :name, autofocus:true, id:"inputName",placeholder:"Name" %></div>
+  </div>
 
-    <div><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%>
-    <p><label for="inputImage">Image</label>
-    <%= f.attachment_field :image, placeholder: "ファイルを選択" %></div></p>
-    <div>商品紹介</div>
-    <div> <%= f.text_area :introduction, autofocus:true, id:"inputIntroduction", placeholder:"Introduction" %></div>
-    <h4>ジャンル</h4>
+  <div class ="row">
+    <label for="id" class="col-sm-4 mb-4 text-left">商品紹介</label>
+    <div class="col-sm-8">
+     <%= f.text_area :introduction, autofocus:true, id:"inputIntroduction", placeholder:"Introduction" %></div>
+  </div>
+  <div class ="row">
+    <label for="id" class="col-sm-4 mb-4 text-left">ジャンル</label>
+    <div class="col-sm-8">
     <%= f.select :genre_id, Genre.all.map{|o| [o.name, o.id]} %>
-
-    <h4>価格</h4>
+    </div>
+  </div>
+  <div class ="row">
+    <label for="id" class="col-sm-4 mb-4 text-left">税抜価格</label>
+    <div class="col-sm-8">
     <%= f.text_field :price, autofocus:true, id:"inputPrice", placeholder:"Price" %>
+    </div>
+  </div>
+  <div class ="row">
+    <label for="id" class="col-sm-4 mb-4 text-left">販売ステータス</label>
+    <div class="col-sm-8">
+      <%= f.collection_radio_buttons :is_active, Item.is_actives_i18n, :first, :last %>
+    </div>
+  </div>
 
-    <p>投稿日時：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
-    <p>更新日時：<%= @item.updated_at.strftime('%Y/%m/%d') %></p>
 
 
-    <div> <%= f.submit "Update Item" %></div>
+  <center class="mt-3">
+  <%= f.submit "変更を保存", class: "btn btn-success" %></center>
 
   <% end %>
-
-
+</div>
+</div>
+</div>
+</div>
+ <!-- attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" -->

@@ -5,26 +5,26 @@
  <div class="row">
    <h5><div class = "bg-light mt-4 col-12 md-10">
    商品一覧</div></h5>
-   <div class ="text-right col-8 mt-3">
+   <div class ="text-right col-8 mt-3 mb-3">
    <%=link_to new_admin_item_path, class: "btn btn-outline-secondary rounded-circle" do %>
    <i class="fas fa-plus"></i>
    <% end %></div>
 
  </div>
- </div>
+
 <!--<table class="table table-hover table-inverse"> -->
 <center>
-<table class="table col-md-5">
+ <table class="table col-md-12">
    <thead class="thead-light">
     <tr>
-    <td>商品ID</td>
-    <td>商品名</td>
-    <td>税抜価格</td>
-    <td>ジャンル</td>
-    <td>ステータス</td>
+     <th>商品ID</th>
+     <th>商品名</th>
+     <th>税抜価格</th>
+     <th>ジャンル</th>
+     <th>ステータス</th>
     </tr>
    </thead>
-   <tbody>
+  <tbody>
    <% @items.each do |item| %>
    <tr>
     <td><%= item.id %></td>
@@ -38,12 +38,9 @@
     </div>
    </tr>
    <% end %>
-   </tbody>
+  </tbody>
 </table>
 
-
-
-<%= link_to "back", admin_homes_top_path %>
 </center>
 <!--<%#= item.created_at.strftime('%Y/%m/%d') %> -->
 

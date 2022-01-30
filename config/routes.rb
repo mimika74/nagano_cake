@@ -31,6 +31,7 @@ end
     resources :items
     get 'orders/:id' => 'orders#show', as: :orders_show
     patch 'orders/:id' => 'orders#update', as: :orders_update
+    patch 'order_details/:id' => 'order_details#update', as: :order_details_update
     get 'customers' =>'customers#index', as: :customers_index
     get 'customers/:id' => 'customers#show', as: :customers_show
     get 'customers/:id/edit' => 'customers#edit', as: :customers_edit
