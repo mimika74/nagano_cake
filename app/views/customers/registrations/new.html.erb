@@ -7,18 +7,20 @@
 
 <div class="container">
   <div class="row">
-<div class="col-12 mt-3 mx-auto">
+<div class="col-12 mt-3 ">
 <%= form_with model: resource, url: registration_path(resource_name), local:true do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
 
 
     <div class="field">
     <div class="row">
-    <label for="id" class="col-sm-4 col-form-label text-right">
+    <label for="id" class="col-2 col-form-label text-left">
     <%= f.label :名前 %></label>
-     <div class="col-sm-8">
-    <%= f.text_field :first_name, autofocus: true %>
-    <%= f.text_field :last_name, autofocus: true %>
+     <div class="col-4">
+    (姓)<%= f.text_field :first_name, autofocus: true %>
+    <div class="col-4">
+    (名)<%= f.text_field :last_name, autofocus: true %>
+    </div>
     </div>
     </div>
     </div>
@@ -29,8 +31,8 @@
 
     <%= f.label :フリガナ %></label>
     <div class="col-sm-8">
-    <%= f.text_field :first_name_kana, autofocus: true %>
-    <%= f.text_field :last_name_kana, autofocus: true %>
+    (セイ)<%= f.text_field :first_name_kana, autofocus: true %>
+    (メイ)<%= f.text_field :last_name_kana, autofocus: true %>
     </div>
   </div>
   </div>
@@ -112,7 +114,18 @@
     </div>
     </div>
 <% end %>
-</div>
+<div class="row">
+ <div class = "bg-light mt-4 col-2 md-3">
+     既に登録済みの方
+   </div>
+  </div>
+   <div class="row">
+    <div class ="ml-5 mt-3">
+     <%=link_to'こちら',  new_customer_session_path %> からログインしてください</div>
+</div></div>
+
+
+
 <%#= render "customers/shared/links" %>
 
 <%#= link_to "back", "/" %>

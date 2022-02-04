@@ -1,6 +1,22 @@
 <h2>商品一覧</h2>
 
 
+<% if @search_items %>
+  <% @search_items.each do |search_item| %>
+<div>
+  <%= attachment_image_tag search_item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
+  <p>商品名：<%= search_item.name %></p>
+  <p>商品説明：<%= search_item.introduction %></p>
+  <p>ジャンル：<%= search_item.genre.name %></p>
+  <p>価格: <%= search_item.with_tax_price %></p>
+
+
+</div>
+
+<% end %>
+
+<% else %>
+
 <% @items.each do |item| %>
 <div>
   <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
@@ -11,6 +27,8 @@
   <%= link_to "Show", item_path(item.id) %>
 
 </div>
+
+<% end %>
 
 <% end %>
 

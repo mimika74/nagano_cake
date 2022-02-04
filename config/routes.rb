@@ -84,7 +84,8 @@ end
 
     end
 
-
+  get 'search' => 'genres#search'
+ 
 
 
   #namespace :customer do
