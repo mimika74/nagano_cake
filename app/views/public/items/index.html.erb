@@ -1,5 +1,25 @@
-<h2>商品一覧</h2>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-5 pl-0">
+  <div class="card border-success mb-0" style="max-width: 12rem;">
+  <div class="card-header bg-transparent border-success">ジャンル検索</div>
+  <div class="card-body text-success">
+
+    <ul class="text-left">
+      <p>ケーキ</p>
+      <p>ゼリー</p>
+      <p>焼き菓子</p>
+
+
+    </ul>
+  </div>
+  </div>
+
+
+</div>
+      <div class="col-md-9 mt-3 pl-auto">
+        <h3>商品一覧</h3>
 
 <% if @search_items %>
   <% @search_items.each do |search_item| %>
@@ -28,3 +48,4 @@
 
 <% end %>
 
+</div>

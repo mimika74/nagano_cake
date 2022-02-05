@@ -14,7 +14,7 @@
 
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-sm">
-    <div class="container">
+    <div class="container p-0 ">
 
 
     <% if admin_signed_in? %>
@@ -50,11 +50,10 @@
     <% else %>
 
       <% if customer_signed_in? %>
-       <div class="row">
-        <div class="col-1">
+
         <%= link_to "LOGO", root_path, class: 'btn btn-outline-secondary font-weight-bold' %>
-        </div>
-        <div class="col-8 ">
+
+
         ようこそ！<%= current_customer.last_name %>様
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class= "navbar-nav ml-auto  d-inline p-2 pl-2" >
@@ -70,8 +69,7 @@
 
         </ul>
         </div>
-        </div>
-        </div>
+
 
       </li>
       <% else %>
