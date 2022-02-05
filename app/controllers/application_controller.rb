@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def set_search
-  @search = Genre.ransack(params[:q])
-  @search_items = @search.result
-  end
+  #def set_search
+  #@search = Genre.ransack(params[:q])
+  #@search_items = @search.result
+  #end
 
 
 
@@ -25,5 +25,6 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :address, :telephone_number, :postal_code, :keyword])
   end
+
 
 end

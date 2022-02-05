@@ -8,12 +8,8 @@
   <p>商品名：<%= search_item.name %></p>
   <p>商品説明：<%= search_item.introduction %></p>
   <p>ジャンル：<%= search_item.genre.name %></p>
-  <p>価格: <%= search_item.with_tax_price %></p>
-
-
-</div>
-
-<% end %>
+  <p>価格: <%= search_item.with_tax_price %>円</p></div>
+  <% end %>
 
 <% else %>
 
@@ -23,7 +19,7 @@
   <p>商品名：<%= item.name %></p>
   <p>商品説明：<%= item.introduction %></p>
   <p>ジャンル：<%= item.genre.name %></p>
-  <p>価格: <%= item.with_tax_price %></p>
+  <p>価格: <%= item.with_tax_price %>円</p>
   <%= link_to "Show", item_path(item.id) %>
 
 </div>
