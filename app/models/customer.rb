@@ -22,4 +22,6 @@ class Customer < ApplicationRecord
     last_name + first_name
   end
 
+
+
 end

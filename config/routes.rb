@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'customers/edit' => 'public/customers#edit', as: :public_customer_edit
-  get 'new/create'
-  get 'new/index'
-  get 'new/show'
+  get 'customers/:id/edit' => 'public/customers#edit', as: :public_customer_edit
+
   devise_for :customers, skip: [:passwords,], controllers: {
     registrations: "customers/registrations",
     sessions: 'customers/sessions'
@@ -54,7 +52,7 @@ end
     get 'items/:id' => 'public/items#show', as: :item
     get 'customers/my_page' => 'public/customers#show'
 
-    patch 'customers' => 'public/customers#update'
+    patch 'customers/:id' => 'public/customers#update', as: :customers
     get 'customers/unsubscribe' => 'public/customers#unsubscribe'
     patch 'customers/withdraw' => 'public/customers#withdraw'
 
@@ -67,8 +65,9 @@ end
 
 
     scope module: :public do
-      resources :cart_items, only: [:update, :index, :create, :destroy]
       delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+      resources :cart_items, only: [:update, :index, :create, :destroy]
+
 
 
     get 'orders/complete' => 'orders#complete', as: :orders_complete
@@ -85,7 +84,7 @@ end
     end
 
   get 'search' => 'genres#search'
- 
+
 
 
   #namespace :customer do

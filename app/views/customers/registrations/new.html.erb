@@ -17,10 +17,10 @@
        <label for="id" class="col-4 col-form-label text-left">
        <%= f.label :名前 %></label>
         <div class="col-3">
-       (姓)<%= f.text_field :first_name, autofocus: true %>
+       (姓)<%= f.text_field :last_name, autofocus: true %>
        </div>
        <div class="col-3">
-       (名)<%= f.text_field :last_name, autofocus: true %>
+       (名)<%= f.text_field :first_name, autofocus: true %>
 
        </div>
       </div>
@@ -32,8 +32,8 @@
 
     <%= f.label :フリガナ %></label>
     <div class="col-sm-8">
-    (セイ)<%= f.text_field :first_name_kana, autofocus: true %>
-    (メイ)<%= f.text_field :last_name_kana, autofocus: true %>
+    (セイ)<%= f.text_field :last_name_kana, autofocus: true %>
+    (メイ)<%= f.text_field :first_name_kana, autofocus: true %>
     </div>
   </div>
   </div>

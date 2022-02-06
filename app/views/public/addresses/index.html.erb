@@ -1,31 +1,55 @@
-配送先登録/一覧
+<div class="container">
+  <div class="row">
+   <h5><div class = "bg-light mt-4 col-12 md-6">
+    配送先登録/一覧
+    </div></h5>
+   </div>
 
+<div class="row">
+  <div class="col-12 mt-3">
 
   <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-
-  <h4>郵便番号</h4>
+<div class="row">
+  <label for= "col-4 text-left">
+  郵便番号(ハイフンなし)</label>
+  <div class="col-8">
   <%= f.text_field :postal_code %>
-  <h4>住所</h4>
-  <%= f.text_area :address %>
+  </div>
+</div>
+   <div class="row">
+    <label for="id" class="col-sm-4 col-form-label text-left">
+  住所</label>
+   <div class="col-8">
+    <%= f.text_field :address %>
+   </div>
+   </div>
 
-   <h4>お名前</h4>
-  <%= f.text_field :name %>
-  <%= f.submit '新規登録' %>
- <% end %>
+   <div class="row">
+    <label for="id" class="col-sm-4 col-form-label text-left">
+     宛名</label>
+       <div class="col-8 p-0">
+  <%= f.text_field :name %></div>
+
+      <div class="pl-5">
+  <%= f.submit '新規登録', class: 'btn btn-success' %>
+ <% end %></div>
+ </div>
+</div>
+ </div>
 
 
 <p>ご自身の住所(初回登録時の住所）</p>
 
 <% if @customer_address.present? %>
 <%= current_customer.postal_code %>
-<%= @customer_address %>
+<%= current_customer.address %>
 <%= current_customer.last_name %><%= current_customer.first_name %>
 <% end %>
 
 <p>登録済みのご住所</p>
 
 
-<% @addresses.each do |address| %>
+<% @customer_address.each do |address| %>
 <div>
 
   <p>郵便番号：<%= address.postal_code %></p>
@@ -38,6 +62,7 @@
 
 <% end %>
 
+</div>
 
 
 

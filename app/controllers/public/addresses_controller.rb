@@ -3,9 +3,9 @@ class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @customer_address = current_customer.address
+    @customer_address = current_customer.addresses
     #@address1 = Address.order(updated_at: :desc).limit(1)
-    @addresses = Address.all
+
     @address = Address.new()
   end
 

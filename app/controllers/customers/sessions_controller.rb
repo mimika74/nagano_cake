@@ -27,7 +27,9 @@ class Customers::SessionsController < Devise::SessionsController
   # end
   def reject_inactive_customer
     @customer = Customer.find_by(email: params[:customer][:email])
-    if @customer.is_deleted == true
+
+    if @customer.is_deleted == "withdraw"
+
       flash[:error] = "退会済みです。"
         redirect_to root_path
     end
