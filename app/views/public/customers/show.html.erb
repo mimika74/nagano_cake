@@ -1,9 +1,15 @@
-<h2>登録情報</h2>
+<div class="container">
+  <div class="row">
+<h5><div class = "bg-light mt-4 col-12 md-10">
+マイページ</div></h5>
 
-
-<%= link_to "編集する", public_customer_edit_path %>
-
-
+<div class="row">
+  <div class="col-2"><strong>
+登録情報</strong></div>
+<div class="col-1">
+<%= link_to "編集する", public_customer_edit_path %></div>
+</div>
+<div class="row">
 <p>氏名
 <%= @customer.last_name %><%= @customer.first_name %></p>
 
@@ -27,3 +33,5 @@
 <p>配送先<%= link_to "一覧を見る", addresses_path %></p>
 <p>注文履歴<%= link_to "一覧を見る", orders_path %></p>
 
+
+</div>

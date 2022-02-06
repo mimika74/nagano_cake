@@ -31,7 +31,7 @@
     <td><%= link_to admin_item_path(item.id) do %>
           <%= item.name %>
         <% end %></td>
-    <td><%= item.price %></td>
+    <td><%= item.price.to_s(:delimited) %></td>
     <td><%= item.genre.name %></td>
     <div class ="text-success">
     <td><%= item.is_active_i18n %></td>

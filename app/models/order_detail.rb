@@ -3,6 +3,6 @@ class OrderDetail < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
-  enum making_status: { id0: 0, id1: 1, id2: 2, id3: 3 }
+  enum making_status: { production_not_possible: 0, production_pending: 1, in_production: 2, production_complete: 3 }
 
 end

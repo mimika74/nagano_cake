@@ -40,10 +40,7 @@
 
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary font-weight-light text-dark' %>
 
-            <%= search_form_for @search, items_path do |f| %>
-            <%= f.text_field :name_cont, placeholder: '名前を入力...' %>
-            <%= f.submit ("検索する") %>
-            <% end %>
+
 
         </ul>
         </div>
@@ -51,22 +48,24 @@
 
       <% if customer_signed_in? %>
 
-        <%= link_to "LOGO", root_path, class: 'btn btn-outline-secondary font-weight-bold' %>
+        <%= link_to "LOGO", root_path, class: 'btn btn-outline-success font-weight-bold' %>
+        <div class="pl-5">
+        ようこそ！<%= current_customer.last_name %>様</div>
 
-
-        ようこそ！<%= current_customer.last_name %>様
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class= "navbar-nav ml-auto  d-inline p-2 pl-2" >
-        <%= link_to "マイページ", customers_my_page_path, class: 'btn btn-outline-secondary font-weight-bold' %>
-        <%= link_to "商品一覧", items_path, class: 'btn btn-outline-secondary font-weight-bold' %>
-        <%= link_to "カート", cart_items_path, class: 'btn btn-outline-secondary font-weight-bold' %>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-secondary font-weight-bold' %>
 
+        <ul class= "navbar-nav ml-auto  d-inline p-2 pl-2" >
+
+        <%= link_to "マイページ", customers_my_page_path, class: 'btn btn-outline-success font-weight-bold' %>
+        <%= link_to "商品一覧", items_path, class: 'btn btn-outline-success font-weight-bold' %>
+        <%= link_to "カート", cart_items_path, class: 'btn btn-outline-success font-weight-bold' %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-success font-weight-bold' %>
+          <div class="mt-2">
             <%= search_form_for @search, url: items_path, local: true do |f| %>
-              <%= f.text_field :name_cont, placeholder: '名前を入力...' %>
+             <%= f.text_field :name_cont, placeholder: '名前を入力...' %>
               <%= f.submit ("検索する") %>
             <% end %>
-
+          </div>
         </ul>
         </div>
 
@@ -80,6 +79,11 @@
       <%= link_to "商品一覧", items_path, class: 'btn btn-outline-secondary font-weight-bold' %>
       <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-outline-secondary font-weight-bold' %>
       <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-secondary font-weight-bold'%>
+
+       <%= search_form_for @search, url: items_path, local: true do |f| %>
+             <%= f.text_field :name_cont, placeholder: '名前を入力...' %>
+             <%= f.submit ("検索する") %>
+       <% end %>
         </ul>
         </div>
       <% end %>

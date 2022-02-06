@@ -1,12 +1,42 @@
-<% @search_items.each do |search_item| %>
-<div>
-  <%= attachment_image_tag search_item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
-  <p>商品名：<%= search_item.name %></p>
-  <p>商品説明：<%= search_item.introduction %></p>
-  <p>ジャンル：<%= search_item.genre.name %></p>
-  <p>価格: <%= search_item.with_tax_price %></p>
-  <%= link_to "Show", item_path(item.id) %>
 
-</div>
+  <!--<div class="card border-success mb-0" style="max-width: 12rem;">-->
+  <!--<div class="card-header bg-transparent border-success">ジャンル検索</div>-->
+  <!--<div class="card-body text-success">-->
 
-<% end %>
+    <ul class="text-left">
+      <table class="table table-bordered my-5">
+        <thead>
+          <tr>
+            <th scope="col">ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <th>
+              <%= form_with url: items_path, method: :get, local: true do |form| %>
+                <%= form.hidden_field :genre_id, value: genre.id %>
+                <%= form.submit genre.name, name: nil, class: "btn btn-link text-dark" %>
+              <% end %>
+            </th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%# @genres.each do |genre| %>
+      <!--<p><%#= link_to genre.name, items_path %></p> -->
+      <tr>
+        <th>
+          <%# form_with url: items_path, method: :get, local: true do |f| %>
+            <%#= f.hidden_field :genre_id, value: genre.id %>
+            <%#= f.submit genre.name, name: nil, class: "btn btn-link text-dark" %>
+          <%# end %>
+        </th>
+      </tr>
+
+      <%# end %>
+
+    </ul>
+  </div>
+  </div>

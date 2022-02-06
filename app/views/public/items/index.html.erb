@@ -2,33 +2,33 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 mt-5 pl-0">
-  <div class="card border-success mb-0" style="max-width: 12rem;">
-  <div class="card-header bg-transparent border-success">ジャンル検索</div>
-  <div class="card-body text-success">
+      <%= render 'public/items/list', items: @items %>
 
-    <ul class="text-left">
-      <p>ケーキ</p>
-      <p>ゼリー</p>
-      <p>焼き菓子</p>
-
-
-    </ul>
-  </div>
-  </div>
-
-
-</div>
-      <div class="col-md-9 mt-3 pl-auto">
-        <h3>商品一覧</h3>
+    </div>
+  <div class="col-md-9 mt-3 pl-auto">
+  <h3>商品一覧</h3>
 
 <% if @search_items %>
   <% @search_items.each do |search_item| %>
-<div>
+
   <%= attachment_image_tag search_item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
   <p>商品名：<%= search_item.name %></p>
   <p>商品説明：<%= search_item.introduction %></p>
   <p>ジャンル：<%= search_item.genre.name %></p>
-  <p>価格: <%= search_item.with_tax_price %>円</p></div>
+  <p>価格: <%= search_item.with_tax_price %>円</p>
+  <% end %>
+
+<% else %>
+
+<% if @search_genres %>
+
+  <% @search_genres.each do |search_genre| %>
+
+  <%= attachment_image_tag search_genre, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
+  <p>商品名：<%= search_genre.name %></p>
+  <p>商品説明：<%= search_genre.introduction %></p>
+  <p>ジャンル：<%= search_genre.genre.name %></p>
+  <p>価格: <%= search_genre.with_tax_price %>円</p></div>
   <% end %>
 
 <% else %>
@@ -41,11 +41,12 @@
   <p>ジャンル：<%= item.genre.name %></p>
   <p>価格: <%= item.with_tax_price %>円</p>
   <%= link_to "Show", item_path(item.id) %>
+  </div>
+<% end %>
 
+<% end %>
+
+<% end %>
 </div>
-
-<% end %>
-
-<% end %>
-
+</div>
 </div>
