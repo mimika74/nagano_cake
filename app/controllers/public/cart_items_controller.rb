@@ -26,7 +26,7 @@ class Public::CartItemsController < ApplicationController
     if  @cart_item.save!
 
       flash[:notice] = '商品が追加されました。'
-      redirect_to items_path
+      redirect_to cart_items_path
     else
       flash[:alert] = '商品の追加に失敗しました。'
       redirect_to items_path

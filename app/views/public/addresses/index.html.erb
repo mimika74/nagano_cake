@@ -9,59 +9,62 @@
   <div class="col-12 mt-3">
 
   <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-<div class="row">
-  <label for= "col-4 text-left">
-  郵便番号(ハイフンなし)</label>
-  <div class="col-8">
-  <%= f.text_field :postal_code %>
-  </div>
-</div>
    <div class="row">
-    <label for="id" class="col-sm-4 col-form-label text-left">
-  住所</label>
-   <div class="col-8">
-    <%= f.text_field :address %>
+    <label for="id" class="col-3 text-left">
+     郵便番号(ハイフンなし)</label>
+    <div class="col-5">
+    <%= f.text_field :postal_code, class: "form-control border border-dark", placeholder: '0000000' %>
+    </div>
+    <div class="col-3"></div>
    </div>
+   <div class="row">
+    <label for="id" class="col-3 text-left">
+     住所</label>
+    <div class="col-8 mt-1">
+    <%= f.text_field :address, class: "form-control border border-dark", autofocus: true, placeholder: '東京都区町１ー３' %>
+    </div>
    </div>
 
-   <div class="row">
-    <label for="id" class="col-sm-4 col-form-label text-left">
+    <div class="row">
+    <label for="id" class="col-3 text-left">
      宛名</label>
-       <div class="col-8 p-0">
-  <%= f.text_field :name %></div>
+     <div class="col-5 mt-1">
+     <%= f.text_field :name, class: "form-control border border-dark", placeholder: '令和道子' %>
+     </div>
 
-      <div class="pl-5">
-  <%= f.submit '新規登録', class: 'btn btn-success' %>
- <% end %></div>
- </div>
+    <div class="col-3 pl-2 mt-2">
+  <%= f.submit '新規登録', class: 'btn btn-success' %></div>
+ <% end %>
 </div>
- </div>
+  </div>
+  </div>
+<!--
+<#% if @customer_address.present? %>
+<#%= current_customer.postal_code %>
+<#%= current_customer.address %>
+<#%= current_customer.last_name %><%#= current_customer.first_name %>
+<#% end %> -->
+<table class="table table-bordered mt-5 col-8">
 
+ <thead class="thead-light">
+  <th>郵便番号</th>
+  <th>住所</th>
+  <th>宛名</th>
+  <th></th>
+  </thead>
+  <tbody>
+ <% @customer_address.each do |address| %>
+ <tr>
+  <td><%= address.postal_code %></td>
+  <td><%= address.address %></td>
+  <td><%= address.name %></td>
+  <td><center><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success btn-sm" %>
+  <%= link_to '削除する', address_path(address.id), method: :delete, class: "btn btn-danger btn-sm" %></center></td>
+  </tr>
+ <% end %>
+  </tbody>
 
-<p>ご自身の住所(初回登録時の住所）</p>
-
-<% if @customer_address.present? %>
-<%= current_customer.postal_code %>
-<%= current_customer.address %>
-<%= current_customer.last_name %><%= current_customer.first_name %>
-<% end %>
-
-<p>登録済みのご住所</p>
-
-
-<% @customer_address.each do |address| %>
-<div>
-
-  <p>郵便番号：<%= address.postal_code %></p>
-  <p>住所：<%= address.address %></p>
-  <p>宛名：<%= address.name %></p>
-<%= link_to "edit", edit_address_path(address.id) %>
-<%= link_to 'Destroy', address_path(address.id), method: :delete %>
-
-</div>
-
-<% end %>
-
+</table>
 </div>
 
 
