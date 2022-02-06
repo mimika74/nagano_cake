@@ -1,5 +1,5 @@
 
-<div class="container mx-1">
+<div class="container mx-auto">
 
 <div class="row">
     <div class="col-md-3 mt-5 m-0 ">
@@ -7,7 +7,7 @@
 
 
 
-<div class="col-md-9 mt-3 ">
+<div class="col-md-9 mt-3 pl-5">
 
 
 
@@ -19,7 +19,7 @@
   <% @search_items.each do |search_item| %>
   <div class="col-3 d-flex flex-column flex-wrap text-wrap">
   <p>
-  <%= link_to item_path(item.id) do %>
+  <%= link_to item_path(search_item.id) do %>
   <%= attachment_image_tag search_item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %></p>
   <% end %>
   <p><%= search_item.name %></p>
@@ -36,7 +36,7 @@
  <strong><p><%= @search_genres.name %>一覧</p></strong>
   <% @search_genres.each do |search_genre| %>
 <div class="col-3 d-flex flex-column flex-wrap text-wrap">
-  <%= link_to item_path(item.id) do %>
+  <%= link_to item_path(search_genre.id) do %>
   <%= attachment_image_tag search_genre, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %>
   <% end %>
   <p><%= search_genre.name %></p>
