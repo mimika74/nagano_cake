@@ -2,12 +2,12 @@
 <div class="container mx-auto">
 
 <div class="row">
-    <div class="col-md-3 mt-5 m-0 ">
+    <div class="col-md-2 mt-5 m-0 ">
       <%= render 'public/items/list', items: @items %></div>
 
 
 
-<div class="col-md-9 mt-3 pl-5">
+<div class="col-md-10 mt-3 pl-5">
 
 
 
@@ -23,7 +23,7 @@
   <%= attachment_image_tag search_item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"  %></p>
   <% end %>
   <p><%= search_item.name %></p>
-  <p>￥<%= search_item.with_tax_price %>円</p>
+  <p>￥<%= search_item.with_tax_price.to_s(:delimited) %>円</p>
   </div>
   <% end %>
   </div>

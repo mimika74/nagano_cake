@@ -14,8 +14,18 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @cart_item = CartItem.new
+    @genres = Genre.all
+
+    @item = Item.find(params[:id]) #元々あった
+    @cart_item = CartItem.new #元々あった
+
+    @items = Item.all
+    @items = Item.where(genre_id: params[:genre_id].to_i) if params[:genre_id].present?
+    @search = Item.ransack(params[:q])
+    @search_items = @search.result
+
+    @search_items = Item.where(genre_id: params[:genre_id].to_i) if params[:genre_id].present?
+
   end
 
   def set_search
