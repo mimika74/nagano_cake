@@ -51,10 +51,10 @@ end
     get 'items' => 'public/items#index'
     get 'items/:id' => 'public/items#show', as: :item
     get 'customers/my_page' => 'public/customers#show'
-
+    patch 'customers/withdraw' => 'public/customers#withdraw'
     patch 'customers/:id' => 'public/customers#update', as: :customers
     get 'customers/unsubscribe' => 'public/customers#unsubscribe'
-    patch 'customers/withdraw' => 'public/customers#withdraw'
+
 
 
     #get 'cart_items' => 'public/cart_items#index'
