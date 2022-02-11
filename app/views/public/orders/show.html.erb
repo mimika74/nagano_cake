@@ -1,36 +1,84 @@
-注文履歴　詳細
 
-<p align ="right">商品合計:<%= @total = (@order.total_payment - @order.shipping_cost).to_s %></p>
+<div class="container">
 
-<p align ="right">送料:<%= @order.shipping_cost %></p>
+ <div class="row">
+   <h5><div class = "bg-light mt-4 col-12 md-10">
+   注文履歴詳細</div></h5>
+  </div>
+<div class="row">
+  <div class="col-7">
+注文情報
+    <div class="row border-top border-left border-right ">
+     <div class="col-3 border-right table-secondary">
+     注文日</div>
+     <div class="col-9">
+     <%= @order.created_at.strftime('%Y/%m/%d') %></div>
+    </div>
 
-<p align ="right">ご請求額:<%= @order.total_payment.to_s %>円</p>
+    <div class="row border-top border-left border-right">
+     <div class="col-3 border-right table-secondary">
+     お届け先</div>
+     <div class="col-9">
+       <p class="my-0">〒<%= @order.postal_code %></p>
+       <p class="my-0"><%= @order.address %></p>
+       <p class="my-0"><%= @order.name %>様</p>
+     </div>
+    </div>
+
+    <div class="row border-top border-left border-right">
+     <div class="col-3 border-right table-secondary">
+     支払方法</div>
+     <div class="col-9">
+     <%= @order.payment_method_i18n %></div>
+    </div>
+
+    <div class="row border-top border-left border-right border-bottom">
+     <div class="col-3 border-right table-secondary">
+      注文ステータス</div>
+      <div class="col-9">
+      <%= @order.status_i18n %></div>
+    </div>
+  </div>
+
+<div class="pl-3"></div>
+
+  <div class="col-4">
+    請求情報
+  <div class="row border-top  border-left  border-right border-bottom mt-3">
+    <div class="col-4 table-secondary">商品合計</div>
+    <div class="col-8 border-left"><%= @total = (@order.total_payment - @order.shipping_cost).to_s %></div>
+  </div>
+
+  <div class="row border-top  border-left  border-right border-bottom mt-3">
+    <div class="col-4 table-secondary">配送料</div>
+    <div class="col-8 border-left"><%= @order.shipping_cost %></div>
+  </div>
+
+<strong>
+  <div class="row border-top  border-left  border-right border-bottom mt-3">
+    <div class="col-4 table-secondary">ご請求額</div>
+    <div class="col-8 border-left"><%= @order.total_payment.to_s %>円</div>
+  </div>
+</strong>
+
+</div>
+
+</div>
 
 
- <p>注文日:<%= @order.created_at %></p>
-<p>支払方法<%= @order.payment_method %></p>
 
 
+  <div class="row mt-5 col-6 p-0">
 
-<p>お届け先　〒<%= @order.postal_code %>
-       <%= @order.address %> </p>
-     <p> <%= @order.name %> </p>
-        <p>注文ステータス<%= @order.status %></p>
-
-
-<center>
-<div class="card" style="width: 60rem;">
-
-     <ul class="list-group list-group-flush">
-     <table>
-      <thead>
+    <table class="table col-md-12">
+      <thead class="thead-light">
         <th>商品名</th>
         <th>単価(税込)</th>
         <th>数量</th>
         <th>小計</th>
 
       </thead>
-     </ul>
+
 
 </div>
     <tbody>
@@ -51,10 +99,10 @@
 
     </tbody>
 </table>
+</div>
+</div>
 
 
-</center>
 
-<%= link_to "Back", orders_path %>
 
 

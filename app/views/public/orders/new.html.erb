@@ -15,7 +15,7 @@
   <div class="radio-inline">
     <%#= f.radio_button :payment_method, 0, checked: "checked" %>
     <%#= f.label :クレジット %>
-    <div class="ml-5">
+    <div class="ml-1">
     <%= f.collection_radio_buttons :payment_method, Order.payment_methods_i18n, :first, :last %></div>
 
   </div>
@@ -34,6 +34,7 @@
 
 <p>〒<%= @customer_address.postal_code %></p>
 <p><%= @customer_address.address %></p>
+<p><%= @customer_address.last_name %><%= @customer_address.first_name %>様</p>
 </div>
 
 
@@ -81,8 +82,11 @@
       </div>
 </div>
 
-
+<center>
+<div class="mt-3">
     <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+</div>
+</center>
 
    <% end %>
 
