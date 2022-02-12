@@ -19,6 +19,25 @@ class Admin::OrdersController < ApplicationController
     else
       render :show
     end
+
+    @order_details = @order.order_details
+
+
+    if @order.status == "paid_up"
+      @order_details.each do |order_detail|
+        order_detail.making_status = "production_pending"
+        order_detail.save
+      end
+    elsif @order_details.where(making_status: "in_production").count >= 1
+          @order.status = 2
+
+
+    elsif @order_details.where(making_status: "production_complete").count == @order_details.count
+          @order.status = "preparing"
+    end
+
+
+
   end
 
 
